@@ -3,6 +3,7 @@ from .models import Product
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('title', 'price', 'in_stock', 'created_at')
-    prepopulated_fields = {"slug": ("title",)}
-    search_fields = ('title',)
+    list_display = ('title', 'price', 'is_active', 'created')
+    prepopulated_fields = {'slug': ('title',)}
+    search_fields = ('title', 'description')
+    list_filter = ('is_active', 'created')

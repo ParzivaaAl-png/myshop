@@ -1,0 +1,16 @@
+# products/urls.py
+from django.urls import path
+from . import views
+
+app_name = "products"
+
+urlpatterns = [
+    # список всех товаров
+    path("", views.product_list, name="product_list"),
+
+    # список по категории (optional)
+    path("category/<slug:category_slug>/", views.product_list, name="product_list_by_category"),
+
+    # detail страницы товара (пример)
+    path("<int:id>/<slug:slug>/", views.product_detail, name="product_detail"),
+]
